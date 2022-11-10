@@ -47,8 +47,8 @@ public partial class MainPage : ContentPage
         parent.Children.Add(getter);
         parent.Children.Add(setterLabel);
         parent.Children.Add(setter);
-        
-        
+
+        _vueModele.index++;
 
     }
 
@@ -57,9 +57,9 @@ public partial class MainPage : ContentPage
         List<string> attribut = new List<string>();
         for(int i = 0; i < x; i++)
         {
-            attribut.Add(nomAttribut1)
+           
         }
-        _vueModele.MaClasse.CollAttribut.Add();
+        //_vueModele.MaClasse.CollAttribut.Add();
     }
 }
 
