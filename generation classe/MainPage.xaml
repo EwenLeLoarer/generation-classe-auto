@@ -1,0 +1,36 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="generation_classe.MainPage">
+
+    <ScrollView>
+        <VerticalStackLayout
+            Spacing="25"
+            Padding="30,0"
+            VerticalOptions="Center">
+
+            <Image
+                Source="dotnet_bot.png"
+                SemanticProperties.Description="Cute dot net bot waving hi to you!"
+                HeightRequest="200"
+                HorizontalOptions="Center" />
+
+            <Entry x:Name="nameClasse"
+                   Placeholder="entrer le nom de la classe"/>
+
+            <Button x:Name="ajoutButton"
+                    Text="ajouter un attribut"
+                    Clicked="ajoutButton_Clicked"/>
+
+            <StackLayout Orientation="Vertical"
+                x:Name="layout">
+                
+            </StackLayout>
+
+            <Button x:Name="valider"
+                    Clicked="valider_Clicked"/>
+
+        </VerticalStackLayout>
+    </ScrollView>
+
+</ContentPage>
