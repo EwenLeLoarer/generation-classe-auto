@@ -15,20 +15,50 @@
                 HeightRequest="200"
                 HorizontalOptions="Center" />
 
-            <Entry x:Name="nameClasse"
+            <StackLayout>
+                <Entry x:Name="nameClasseXAML"
                    Placeholder="entrer le nom de la classe"/>
 
-            <Button x:Name="ajoutButton"
-                    Text="ajouter un attribut"
-                    Clicked="ajoutButton_Clicked"/>
+                <Entry x:Name="nomAttributXAML"
+                   Placeholder="entrer le nom de l'attribut Exemple : _nom"/>
+                <Entry x:Name="typeAttributXAML"
+                   Placeholder="entrer le type de l'attribut"/>
+                <Label x:Name="labelGetterXAMl"
+                   Text="getter oui/non"/>
+                <CheckBox x:Name="getterXAML"
+                      IsChecked="True"/>
+                <Label x:Name="labelSetterXAML"
+                   Text="setter oui/non"/>
+                <CheckBox x:Name="setterXAML"
+                      IsChecked="True"/>
+                <Button x:Name="validerButton"
+                        Text="valider l'attribut"
+                        Clicked="validerButton_Clicked"/>
+            </StackLayout>
+
+            <Label x:Name="texteDelete"
+                   Text="pour supprimer un attribut, entrer son nom private ici:"/>
+            
+            <Entry x:Name="deleteEntry"
+                   Placeholder="ex:_nom"/>
+
+            <Button x:Name="buttonDelete"
+                    Text="supprimer"
+                    Clicked="buttonDelete_Clicked"/>
+
+            <Label x:Name="finalText"
+                   Text="le resultat sera mis ici"/>
+
 
             <StackLayout Orientation="Vertical"
                 x:Name="layout">
                 
             </StackLayout>
 
-            <Button x:Name="valider"
-                    Clicked="valider_Clicked"/>
+            <Button  x:Name="generationFichier"
+                     Text="generer le fichier cs"
+                     Clicked="generationFichier_Clicked"
+                     />
 
         </VerticalStackLayout>
     </ScrollView>
