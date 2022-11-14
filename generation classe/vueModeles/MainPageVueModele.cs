@@ -159,7 +159,7 @@ namespace generation_classe.vueModeles
 
             foreach(Attribut attribut in ListAttribut)
             {
-                resultat += "public " + attribut.TypeAttribut + " " + char.ToUpper(attribut.NomAttribut[0]) + attribut.NomAttribut.Substring(1) + "{";
+                resultat += "public " + attribut.TypeAttribut + " " + char.ToUpper(attribut.NomAttribut[1])+ attribut.NomAttribut.Substring(1)  + "{";
                     if(attribut.HasGetter) { resultat += "get => " + attribut.NomAttribut + "; " ; }
                     if(attribut.HasSetter) { resultat += "set => " + attribut.NomAttribut + " = value; "; }
                 resultat += "} \n";
