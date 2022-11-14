@@ -60,13 +60,15 @@ public partial class MainPage : ContentPage
     //}
     private void validerButton_Clicked(object sender, EventArgs e)
     {
-        _vueModele.ajouterAttribut(nomAttributXAML.Text, typeAttributXAML.Text, getterXAML.IsChecked, setterXAML.IsChecked, nameClasseXAML.Text);
+
+        _vueModele.ajouterAttribut(nomAttributXAML.Text, typeAttributXAML.Text, getterXAML.IsChecked, setterXAML.IsChecked, constructeurXAML.IsChecked, nameClasseXAML.Text);
         finalText.Text = _vueModele.CreerClasse(_vueModele.LesAttributs, nameClasseXAML.Text);
 
         nomAttributXAML.Text = "";
         typeAttributXAML.Text = "";
         getterXAML.IsChecked = true;
         setterXAML.IsChecked = true;
+        constructeurXAML.IsChecked = true;
         
     }
 

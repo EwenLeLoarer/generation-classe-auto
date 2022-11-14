@@ -27,7 +27,7 @@ namespace generation_classe.vueModeles
         public int index = 0;
         #endregion
 
-
+        
 
 
         #region constructeur
@@ -118,9 +118,13 @@ namespace generation_classe.vueModeles
 
         #region methodes
 
-        public void ajouterAttribut(string nomAttribut, string typeAttribut, bool getter, bool setter, string nomClasse)
+        public void ajouterAttribut(string nomAttribut, string typeAttribut, bool getter, bool setter,bool inConstructeur, string nomClasse)
         {
-            LeAttribut = new Attribut(nomAttribut, typeAttribut,getter, setter);
+            string result = nomAttribut;
+            string verif = "_";
+            if (result != null && result[0].ToString() != "_")
+                verif += result;
+            LeAttribut = new Attribut(verif, typeAttribut,getter, setter,inConstructeur);
             _lesAttributs.Add(LeAttribut);
         }
 
@@ -131,42 +135,44 @@ namespace generation_classe.vueModeles
                 "using System.Collections.Generic; \n" +
                 "using System.Linq;\n" +
                 "using System.Text;\n" +
-                "using System.Threding.Tasks \n \n" +
+                "using System.Threading.Tasks \n \n" +
                 "public class " + nomClasse + "; \n" +
-                "{ \n #region attributs \n";
+                "{ \n   #region attributs \n";
 
             foreach(Attribut attribut in ListAttribut)
             {
-                resultat += "private " + attribut.TypeAttribut + " " + attribut.NomAttribut + "; \n";
+                resultat += "   private " + attribut.TypeAttribut + " " + attribut.NomAttribut + "; \n";
             }
-            resultat += "public static ObservableCollection<" + nomClasse + "> CollCLasse = new ObservableCollection<" + nomClasse + ">(); \n" + 
-                "#endregion \n" +
-                "\n #region constructeur \n" +
-                "public " + nomClasse + "(";
+            resultat += "   public static ObservableCollection<" + nomClasse + "> CollCLasse = new ObservableCollection<" + nomClasse + ">(); \n" + 
+                "   #endregion \n" +
+                "\n     #region constructeur \n" +
+                "   public " + nomClasse + "(";
 
             foreach(Attribut attribut in ListAttribut)
             {
-                resultat += attribut.TypeAttribut + " " + attribut.NomAttribut.Remove(0, 1) + ", ";
+                if(attribut.InConstructeur)
+                    resultat += attribut.TypeAttribut + " " + attribut.NomAttribut.Remove(0, 1) + ", ";
             }
             resultat = resultat.Substring(0, resultat.Length - 2);
-            resultat += ")\n { \n ";
+            resultat += ")\n    { \n    ";
             foreach(Attribut attribut in ListAttribut)
             {
-                resultat += attribut.NomAttribut + " = " + attribut.NomAttribut.Remove(0, 1) + "; \n";
+                if(attribut.InConstructeur)
+                    resultat += "   " + attribut.NomAttribut + " = " + attribut.NomAttribut.Remove(0, 1) + "; \n";
             }
-            resultat += "CollClasse.Add(this); \n";
-            resultat += "} \n #endregion \n \n #region getter/setter \n";
+            resultat += "   CollClasse.Add(this); \n";
+            resultat += "   } \n    #endregion \n \n    #region getter/setter \n";
 
             foreach(Attribut attribut in ListAttribut)
             {
-                resultat += "public " + attribut.TypeAttribut + " " + char.ToUpper(attribut.NomAttribut[1])+ attribut.NomAttribut.Substring(1)  + "{";
+                resultat += "   public " + attribut.TypeAttribut + " " + $"{attribut.NomAttribut[1].ToString().ToUpper()}{attribut.NomAttribut.Substring(2)}" + "{";
                     if(attribut.HasGetter) { resultat += "get => " + attribut.NomAttribut + "; " ; }
                     if(attribut.HasSetter) { resultat += "set => " + attribut.NomAttribut + " = value; "; }
                 resultat += "} \n";
             }
 
-            resultat += "#endregion \n \n #region methodes \n" +
-                "#endregion";
+            resultat += "   #endregion \n \n    #region methodes \n" +
+                "   #endregion";
 
             return resultat;           
         }

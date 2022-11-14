@@ -31,6 +31,11 @@
                    Text="setter oui/non"/>
                 <CheckBox x:Name="setterXAML"
                       IsChecked="True"/>
+                <Label x:Name="inConstructeurXAML"
+                       Text="attribut dans le contructeur?"/>
+                <CheckBox x:Name="constructeurXAML"
+                          IsChecked="True"/>
+
                 <Button x:Name="validerButton"
                         Text="valider l'attribut"
                         Clicked="validerButton_Clicked"/>
@@ -57,8 +62,7 @@
 
             <Button  x:Name="generationFichier"
                      Text="generer le fichier cs"
-                     Clicked="generationFichier_Clicked"
-                     />
+                     Clicked="generationFichier_Clicked"/>
 
         </VerticalStackLayout>
     </ScrollView>
