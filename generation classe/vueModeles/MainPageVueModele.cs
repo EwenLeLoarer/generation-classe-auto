@@ -139,7 +139,7 @@ namespace generation_classe.vueModeles
             {
                 resultat += "private " + attribut.TypeAttribut + " " + attribut.NomAttribut + "; \n";
             }
-            resultat += "\n " +
+            resultat += "public static ObservableCollection<" + nomClasse + "> CollCLasse = new ObservableCollection<" + nomClasse + ">(); \n" + 
                 "#endregion \n" +
                 "\n #region constructeur \n" +
                 "public " + nomClasse + "(";
@@ -154,7 +154,7 @@ namespace generation_classe.vueModeles
             {
                 resultat += attribut.NomAttribut + " = " + attribut.NomAttribut.Remove(0, 1) + "; \n";
             }
-
+            resultat += "CollClasse.Add(this); \n";
             resultat += "} \n #endregion \n \n #region getter/setter \n";
 
             foreach(Attribut attribut in ListAttribut)
