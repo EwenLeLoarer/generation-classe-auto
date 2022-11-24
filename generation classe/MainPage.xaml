@@ -20,7 +20,7 @@
                    Placeholder="entrer le nom de la classe"/>
 
                 <Entry x:Name="nomAttributXAML"
-                   Placeholder="entrer le nom de l'attribut Exemple : _nom"/>
+                   Placeholder="entrer le nom de l'attribut Exemple : nom"/>
                 <Entry x:Name="typeAttributXAML"
                    Placeholder="entrer le type de l'attribut"/>
                 <Label x:Name="labelGetterXAMl"
